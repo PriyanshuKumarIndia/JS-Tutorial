@@ -1,25 +1,11 @@
-let url = "https://cat-fact.herokuapp.com/facts";
+let facts = fetch("https://cat-fact.herokuapp.com/facts");
 
-// let promise = fetch(url);
-// promise.then((res)=>{
-//     console.log(res);
-//     return res.json();
-// }).then((val)=>{
-//     console.log(val);
-// })
-
-
-//**IIFE**
-// (async function (){
-//     try {
-//         let response = await fetch(url);
-//         console.log(response);
-//         console.log("Fetching data....");
-//         let data = await response.json();
-//         for(let i=0;i<data.length;i++){
-//             console.log(data[i].text);
-//         }
-//     } catch(err){
-//         console.log(err.message);
-//     }
-// })();
+facts.then((response)=>{
+    let fact = response.json();
+    fact.then((data)=>{
+        let f1 = data[0].text;
+        localStorage.setItem("1",f1);
+        let ff1 = localStorage.getItem("1");
+        console.log(ff1);
+    })
+})
